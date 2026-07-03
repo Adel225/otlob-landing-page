@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import logo from "./assets/noBG.png";
 
 const TYPEFORM_URL = "YOUR_TYPEFORM_URL";
 const ACCENT = "#FF3B00";
@@ -121,7 +122,7 @@ export default function App() {
         style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%)" }}
       >
         <div className="flex items-center gap-2">
-          <img width={30} src="/src/assets/noBG.png" alt="logo"/>
+          <img width={30} src={logo} alt="logo"/>
           <span
             className="text-xl font-extrabold uppercase tracking-wider text-white"
             style={{ fontFamily: "'Syne', sans-serif" }}
