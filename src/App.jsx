@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import logo from "./assets/noBG.png";
 
-const TYPEFORM_URL = "YOUR_TYPEFORM_URL";
+const TYPEFORM_URL = import.meta.env.VITE_TYPEFORM_URL || "#";
 const ACCENT = "#FF3B00";
 const BG = "#0A0A0A";
 
@@ -63,11 +63,14 @@ function StatCard({ value, suffix, label, duration, inView }) {
     <div className="flex flex-col gap-1">
       <span
         className="text-5xl font-extrabold leading-none tracking-tight text-white sm:text-6xl"
-        style={{ fontFamily: "'Syne', sans-serif" }}
+        style={{ fontFamily: "'Intr', sans-serif" }}
       >
         {count}{suffix}
       </span>
-      <span className="text-xs uppercase tracking-[0.2em] text-white/40">{label}</span>
+      <span 
+          className="text-xs uppercase tracking-[0.2em] text-white/40"
+          style={{ fontFamily: "'Syne', sans-serif" }} 
+        >{label}</span>
     </div>
   );
 }
@@ -76,7 +79,7 @@ function StatCard({ value, suffix, label, duration, inView }) {
 function StepCard({ number, title, body, delay }) {
   return (
     <Reveal delay={delay}>
-      <div className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06]">
+      <div className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:-translate-y-0.5 focus-within:ring-2 focus-within:ring-white/20">
         <div
           className="mb-6 text-[80px] font-extrabold leading-none"
           style={{ fontFamily: "'Syne', sans-serif", color: ACCENT, opacity: 0.15 }}
@@ -98,7 +101,7 @@ function StepCard({ number, title, body, delay }) {
 function ProblemCard({ title, body, delay }) {
   return (
     <Reveal delay={delay}>
-      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-7">
+      <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/[0.12] hover:bg-white/[0.04] focus-within:ring-2 focus-within:ring-white/20">
         <div className="mb-4 h-px w-8" style={{ backgroundColor: ACCENT }} />
         <h3 className="mb-2 text-lg font-semibold text-white">{title}</h3>
         <p className="text-sm leading-relaxed text-white/50">{body}</p>
@@ -112,6 +115,7 @@ export default function App() {
   const [statsRef, statsInView] = useInView(0.3);
 
   return (
+
     <main
       style={{ backgroundColor: BG,fontFamily: "'Space Grotesk', sans-serif" }}
       className="min-h-screen overflow-x-hidden text-white"
@@ -125,7 +129,7 @@ export default function App() {
           <img width={30} src={logo} alt="logo"/>
           <span
             className="text-xl font-extrabold uppercase tracking-wider text-white"
-            style={{ fontFamily: "'Syne', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             otlob
           </span>
@@ -137,12 +141,15 @@ export default function App() {
             </span>
         </div>
         <a
-          href={TYPEFORM_URL}
-          className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:opacity-80"
-          style={{ backgroundColor: ACCENT }}
-        >
-          Join waitlist
-        </a>
+            href={TYPEFORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Join the otlob waitlist"
+            className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-all hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            style={{ backgroundColor: ACCENT }}
+          >
+            Join waitlist
+          </a>
       </nav>
 
       {/* ── HERO ────────────────────────────────────────────────── */}
@@ -206,11 +213,14 @@ export default function App() {
 
           {/* CTA */}
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href={TYPEFORM_URL}
-              className="group relative overflow-hidden rounded-full px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,59,0,0.4)]"
-              style={{ backgroundColor: ACCENT }}
-            >
+          <a
+            href={TYPEFORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reserve your spot on the otlob waitlist"
+            className="group relative overflow-hidden rounded-full px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,59,0,0.4)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            style={{ backgroundColor: ACCENT }}
+          >
               <span className="relative z-10">Reserve my spot →</span>
               <div
                 className="absolute inset-0 translate-x-[-100%] transition-transform duration-500 group-hover:translate-x-0"
@@ -403,11 +413,14 @@ export default function App() {
               your campus.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3">
-              <a
-                href={TYPEFORM_URL}
-                className="group relative overflow-hidden rounded-full px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,59,0,0.35)]"
-                style={{ backgroundColor: ACCENT }}
-              >
+            <a
+              href={TYPEFORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Reserve your spot on the waitlist"
+              className="group relative overflow-hidden rounded-full px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,59,0,0.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              style={{ backgroundColor: ACCENT }}
+            >
                 <span className="relative z-10">Reserve my spot →</span>
                 <div
                   className="absolute inset-0 translate-x-[-100%] transition-transform duration-500 group-hover:translate-x-0"
@@ -423,25 +436,21 @@ export default function App() {
       <footer className="border-t border-white/[0.06] px-6 py-10 md:px-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
-            <span
-              className="text-lg font-extrabold uppercase tracking-wider"
-              style={{ fontFamily: "'Syne', sans-serif", color: ACCENT }}
-            >
+            <img width={24} src={logo} alt="otlob" loading="lazy" className="opacity-80" />
+            <span className="text-lg font-extrabold uppercase tracking-wider" style={{ fontFamily: "'Syne', sans-serif", color: ACCENT }}>
               otlob
             </span>
-            <span
-              className="text-base font-black text-white/30"
-              style={{ fontFamily: "'Noto Sans Arabic', sans-serif" }}
-            >
+            <span className="text-base font-black text-white/30" style={{ fontFamily: "'Noto Sans Arabic', sans-serif" }}>
               اطلب
             </span>
           </div>
-          <p className="text-xs text-white/25">
+          <p className="text-xs text-white/40">
             © 2026 otlob · Made for Egyptian students 🇪🇬
           </p>
         </div>
       </footer>
 
     </main>
+
   );
 }
