@@ -121,7 +121,7 @@ export default function App() {
         style={{ background: "linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, transparent 100%)" }}
       >
         <div className="flex items-center gap-2">
-          <img width={30} src="/public/noBG.png" alt="A descriptive summary of the image"/>
+          <img width={30} src="/src/assets/noBG.png" alt="logo"/>
           <span
             className="text-xl font-extrabold uppercase tracking-wider text-white"
             style={{ fontFamily: "'Syne', sans-serif" }}
